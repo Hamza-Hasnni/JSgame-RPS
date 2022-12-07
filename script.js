@@ -4,18 +4,19 @@ const computerPlay =()=>{
     return rand;
 }
 
-const userPlay = ()=>{
+const userPlay = (roundNum)=>{
     let palyerchoice =["rock","paper","scissors"];
-    let choice;
+    let choice = prompt(`Round : ${roundNum} \nSelect your choice: 'Rock', 'Paper' or 'Scissors' `) ;
     
     
-     do {
-        choice= prompt("Select your choice: 'Rock', 'Paper' or 'Scissors'") ;
-     } while (palyerchoice.indexOf(choice.toLocaleLowerCase()) === -1);
+    while(palyerchoice.indexOf(choice.toLocaleLowerCase()) === -1){
+        choice= prompt(`Round : ${roundNum}\n Invalid input \nSelect your choice: 'Rock', 'Paper' or 'Scissors' again`) ;
+     } 
    
    
    return choice.toLocaleLowerCase();
 }
+
 
 const playRound =(playerSelection, computerSelection) =>{
      if(playerSelection === computerSelection){
@@ -44,7 +45,7 @@ const game = ()=>{
     let player = 0, computer = 0, draw = 0;
     for (let i = 0; i < 5; i++) {
         
-        let result = playRound(userPlay(),computerPlay())
+        let result = playRound(userPlay(i+1),computerPlay())
         if (result == true) {
              player += 1;
          } else if(result == false){
@@ -66,8 +67,6 @@ const game = ()=>{
 
 
 game()
-
-
 
 
 
